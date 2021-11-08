@@ -6,6 +6,9 @@ Facial Emotion Recognition with
 In the current implementation, whenever a face is detected in a frame, the CNN model will classify the person's emotion. This emotion
 is then accumulated over a fixed `window_duration_in_frames` frames to output the dominant emotion using a Queue. In case no face is detected, this Queue remains untouched.
 
+# Examples
+![Emotion Recognition](/media/emotion_recognition.avi)
+
 # Prerequisites
 - [x] poetry
 ```

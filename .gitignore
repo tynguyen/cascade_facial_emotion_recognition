@@ -1,6 +1,6 @@
 *.pyc
 *.__pycache__
 cascade_fer/ckpts/
-results
 logs
+results
 
