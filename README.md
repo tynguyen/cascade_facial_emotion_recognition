@@ -7,7 +7,7 @@ In the current implementation, whenever a face is detected in a frame, the CNN m
 is then accumulated over a fixed `window_duration_in_frames` frames to output the dominant emotion using a Queue. In case no face is detected, this Queue remains untouched.
 
 # Examples
-![Emotion Recognition](/media/emotion_recognition.avi)
+![Emotion Recognition](/media/emotion_recognition.gif)
 
 # Prerequisites
 - [x] poetry
