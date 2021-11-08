@@ -20,7 +20,6 @@ bash Anaconda3-2021.05-Linux-x86_64.sh
 rm Anaconda3-2021.05-Linux-x86_64.sh
 ```
 - [x] CUDA == 11.1
-```
 
 
 # Repo's Structure
@@ -74,6 +73,7 @@ pip install dist/cascade_fer-<version>.whl
 >>> cfer = CascadeFER()
 >>> cfer(image)
 ```
+
 To run a livestream demo, run
 ```
 python tests/test_live_fer.py
