@@ -3,6 +3,8 @@ Facial Emotion Recognition with
 * Cascade method to detect faces
 * DNN-based method to classify facial emotions
 
+In the current implementation, whenever a face is detected in a frame, the CNN model will classify the person's emotion. This emotion
+is then accumulated over a fixed `window_duration_in_frames` frames to output the dominant emotion using a Queue. In case no face is detected, this Queue remains untouched.
 
 # Prerequisites
 - [x] poetry
@@ -18,21 +20,22 @@ bash Anaconda3-2021.05-Linux-x86_64.sh
 rm Anaconda3-2021.05-Linux-x86_64.sh
 ```
 - [x] CUDA == 11.1
-- [] Pytorch1.8.0 for CUDA11.1
-You can skip the following installation step if using the existing conda environment (by running `conda create -f environment.yml`)
-```
-conda install pytorch==1.8.0 torchvision==0.9.0 torchaudio==0.8.0 cudatoolkit=11.1 -c pytorch -c conda-forge
 ```
 
 
 # Repo's Structure
+```
 |--cascade_fer: main directory for the source code of this project
 |--tests: unit test files
 |--environment.yml: yaml file to reproduce the conda environment used to build the project. To reproduce this conda environment, run `conda env create -f environment.yml`
 |--pyproject.toml: config file for a poetry project, used to manage dependences and build the project using `poetry` command
 |--requirements.txt: other package dependencies that are required to reproduce results. Once sourcing the conda environment, run `pip install -r requirements.txt`
+```
 
-# Setup
+# Installation
+There are two methods: 1) install from the source, and 2) install from the wheel file.
+
+## Install from Source
 I use `poetry` to manage the whole project. For example, to build the project
 ```
 poetry build
@@ -57,4 +60,21 @@ poetry add "opencv-python>=4.0.0"
 This new package will be added to `pyproject.toml` for easy maintanence and upgrade. For example, to update dependences to their latest available versions, just simply run
 ```
 poetry update
+```
+
+## Install from the Wheel File
+```
+git clone git@github.com:tynguyen/cascade_facial_emotion_recognition.git
+pip install dist/cascade_fer-<version>.whl
+```
+
+## Usages
+```
+>>> from cascade_fer import CascadeFER
+>>> cfer = CascadeFER()
+>>> cfer(image)
+```
+To run a livestream demo, run
+```
+python tests/test_live_fer.py
 ```

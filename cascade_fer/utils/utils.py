@@ -69,6 +69,8 @@ class EmotionTracker(object):
         Returns:
             int: The emotion index
         """
+        if len(self.emotions) == 0:
+            return None
         return max(set(self.emotions), key=self.emotions.count)
 
     def update(self, emotion_idx: int) -> int:
@@ -78,6 +80,7 @@ class EmotionTracker(object):
             emotion_idx (int): The emotion index
         """
         self.add_emotion(emotion_idx)
+        return self.get_major_emotion()
 
     def get_major_emotion_group(self) -> int:
         """Get the most frequent emotion group in the tracker
@@ -85,6 +88,8 @@ class EmotionTracker(object):
         Returns:
             int: The emotion group index
         """
+        if len(self.emotion_groups) == 0:
+            return None
         return max(set(self.emotion_groups), key=self.emotion_groups.count)
 
     def __len__(self) -> int:

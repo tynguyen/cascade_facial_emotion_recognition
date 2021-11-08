@@ -36,14 +36,13 @@ def test_emotion_tracker():
         0,
     ]
     emotions_list = np.random.randint(0, 7, size=20)
-    # logging.info("Emotions list: {}".format(emotions_list))
+    logging.debug("Emotions list: {}".format(emotions_list))
     for i, emotion in enumerate(emotions_list):
-        # logging.info("Emotion: {}".format(emotion))
+        logging.debug("Emotion: {}".format(emotion))
         major_emotion = tracker.update(emotion)
-        # logging.info("Major emotion: {}".format(major_emotion))
-        # logging.info("Emotion tracker: {}".format(tracker))
+        logging.debug("Major emotion: {}".format(major_emotion))
+        logging.debug("Emotion tracker: {}".format(tracker))
         assert major_emotion == gt_major_emotions_list[i]
-    print(gt_major_emotions_list)
 
 
 if __name__ == "__main__":
