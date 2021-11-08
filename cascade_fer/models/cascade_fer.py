@@ -150,13 +150,14 @@ class CascadeFER(object):
             "group": self.dominant_emotion_group,
             "name": dominant_emotion_name,
         }
+        return self.dominant_emotion_repr
 
     def __call__(self, image):
         """
         Make a class instance callable
         """
         self._predict(image)
-        self._update()
+        return self._update()
 
     def display_facial_landmarks(self, frame):
         for (i, face_coords) in enumerate(self._predicted_face_coords):
